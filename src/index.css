@@ -1,0 +1,195 @@
+body {
+  margin: 0;
+  background-color: #F5F7FB;
+  color: #293264;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+}
+* {
+  box-sizing: border-box;
+}
+h1 {
+  font-family: 'Karla', sans-serif;
+  font-weight: 500;
+  font-size: 2.7em;
+  margin: 0 0 15px 0;
+}
+h2 {
+  font-family: 'Karla', sans-serif;
+  font-weight: 500;
+  font-size: 2.4em;
+  margin: 0 0 15px 0;
+}
+h3 {
+  font-family: 'Karla', sans-serif;
+  font-weight: 500;
+  font-size: 2.1em;
+  margin: 0 0 15px 0;
+}
+h4 {
+  font-family: 'Karla', sans-serif;
+  font-weight: 500;
+  font-size: 1.8em;
+  margin: 0 0 15px 0;
+}
+h5 {
+  font-family: 'Karla', sans-serif;
+  font-weight: 500;
+  font-size: 1.5em;
+  margin: 0 0 15px 0;
+}
+h6 {
+  font-family: 'Karla', sans-serif;
+  font-weight: 500;
+  font-size: 1.2em;
+  margin: 0 0 15px 0;
+}
+p {
+  font-size: 1em;
+  margin: 0 0 20px 0;
+}
+button {
+  background-color: #4D5B9E;
+  box-shadow: 0 4px 4px 0 #00000025;
+  color: #F5F7FB;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 15px 0;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: 'Karla', sans-serif;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+button:hover {
+  transform: scale(1.02);
+}
+#quizzical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+#quizzical #blob-1 {
+  max-width: 600px;
+  width: 100%;
+  position: fixed;
+  top: -200px;
+  right: -200px;
+  z-index: -1;
+  transition: 1s cubic-bezier(0.43, -0.01, 0, 1);
+}
+#quizzical #blob-2 {
+  max-width: 600px;
+  width: 100%;
+  position: fixed;
+  bottom: -200px;
+  left: -200px;
+  z-index: -1;
+  transition: 1s cubic-bezier(0.43, -0.01, 0, 1);
+}
+#quizzical.active #blob-1 {
+  top: -300px;
+  right: -300px;
+}
+@media (max-width: 499px) {
+  #quizzical.active #blob-1 {
+    top: -200px;
+    right: -200px;
+  }
+}
+#quizzical.active #blob-2 {
+  bottom: -300px;
+  left: -300px;
+}
+@media (max-width: 499px) {
+  #quizzical.active #blob-2 {
+    bottom: -200px;
+    left: -200px;
+  }
+}
+#quizzical .container {
+  padding: 100px 25px;
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#quizzical .quiz {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #1a1a1a15;
+}
+#quizzical .quiz .question {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+#quizzical .quiz .choices {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  grid-gap: 25px;
+  gap: 25px;
+}
+#quizzical .quiz .choices .choice {
+  padding: 5px 10px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1.5px solid #4D5B9E;
+  text-align: center;
+  position: relative;
+  min-width: 100px;
+}
+#quizzical .quiz .choices .choice input {
+  position: absolute;
+  opacity: 0;
+}
+#quizzical .quiz .choices .choice.selected {
+  border: 1.5px solid transparent;
+  background-color: #D6DBF5;
+}
+#quizzical .quiz .choices .choice.correct {
+  border: 1.5px solid transparent;
+  background-color: #94D7A2;
+}
+#quizzical .quiz .choices .choice.wrong {
+  border: 1.5px solid transparent;
+  background-color: #F8BCBC;
+}
+#quizzical #category {
+  padding: 10px 2em 10px 20px;
+  color: #293264;
+  font-size: 1.1em;
+  font-family: 'Karla';
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  border: none;
+  border-radius: 10px;
+  background-color: #e5e8f7;
+  box-shadow: 0 4px 4px 0 #00000025;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23293264%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.7em top 50% !important;
+  background-size: 0.65em auto, 100% !important;
+}
+#quizzical #score {
+  margin-top: 25px;
+}
+#quizzical #score span {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-right: 20px;
+}
